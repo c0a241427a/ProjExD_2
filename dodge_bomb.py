@@ -12,7 +12,6 @@ DELTA = {
     pg.K_LEFT: (-5, 0),
     pg.K_RIGHT: (+5, 0),
 }
-
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -75,7 +74,6 @@ def check_bound(obj_rct: pg.Rect) -> tuple[bool, bool]:
         tate = False
     return yoko, tate
 
-import time
 
 def game_over(screen: pg.Surface) -> None:
     a = pg.Surface((WIDTH, HEIGHT))
@@ -94,7 +92,6 @@ def game_over(screen: pg.Surface) -> None:
     screen.blit(text, text_rct)
     pg.display.update()
     time.sleep(5)
-
 
 
 if __name__ == "__main__":
