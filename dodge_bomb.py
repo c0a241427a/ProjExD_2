@@ -66,6 +66,7 @@ def main():
         tmr += 1
         clock.tick(50)
 
+
 def check_bound(obj_rct: pg.Rect) -> tuple[bool, bool]:
     yoko, tate = True, True
     if obj_rct.left < 0 or WIDTH < obj_rct.right:
