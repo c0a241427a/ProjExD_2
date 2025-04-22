@@ -30,6 +30,7 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
         tate = False
     return yoko, tate
 
+
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -77,6 +78,25 @@ def main():
         pg.display.update()
         tmr += 1
         clock.tick(50)
+
+
+def gameover(screen: pg.Surface) -> None:
+    a = pg.Surface(WIDTH, HEIGHT)
+    a.set_alpha(200)
+    pg.draw.rect(a, (0, 0, 0,), pg.rect(0, 0, WIDTH, HEIGHT))
+    font = pg.font.Font(None, 80)
+    txt = font.render("Game Over", True, (255, 0, 0))
+    txt_rect = txt.get_rect(center=(WIDTH//2, HEIGHT//2 - 100))
+    screen.blit(txt, txt_rect)
+    naki_kk_img = pg.transform.rotozoom(pg.image.load("fig/8.png"), 0, 0.9)
+    naki_kk_rect = naki_kk_img.get_rect(center=(WIDTH//2, HEIGHT//2))
+    screen.blit(naki_kk_img, naki_kk_rect)
+    screen.blit(a, (0, 0))
+    screen.blit(txt, [300, 200])
+    pg.display.update()
+    if naki_kk_img.colliderect(a): 
+        gameover(screen)
+
 
 
 if __name__ == "__main__":
